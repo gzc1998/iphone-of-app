@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #all1{
+            width: 300px;
+            height: 260px;
+            border: 1px solid blueviolet;
+            border-radius: 30px;
+        }
+        #all1>header{
+            height: 100px;
+            line-height: 100px;
+            padding: 0 10px;
+            border-bottom: cornsilk;
+            font-size: 30px;
+        }
+        #all1.clearing{
+           float: right;
+        }
+        #all1 footer{
+            height: 100px;
+            line-height: 100px;
+            padding: 10px 10px;
+        }
+        #all1 button{
+            height: 60px;
+            width: 100px;
+            text-align: center;
+            font-size: 15px;
+            position: absolute;
+            left: 100px;
+            margin-top: 20px;
+        }
+        #all1 main{
+            border-bottom: cornsilk;
+        }
+        #all1 label{
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="all">
+        <button v-on:click="show_up">登陆</button>
+        <button v-on:click="show_down">注册</button>
+        <my-aoligei title="登录" v-show="up">
+            <div id="haha">
+                <label>用户名</label>
+                <input type="text">
+            </div>
+            <div id="haha">
+                <label>密码</label>
+                <input type="text">
+            </div>
+        </my-aoligei>
+        <my-aoligei title="注册" v-show="down">
+            <div id="haha">
+                <label>用户名</label>
+                <input type="text">
+            </div>
+            <div id="haha">
+                <label>密码</label>
+                <input type="text">
+            </div>
+            <div id="haha"><label>确认密码</label>
+                <input type="text"></div>
+        </my-aoligei>
+    </div>
+    <template id="part">
+        <div id="all1">
+            <header>{{title}}
+                <span class="clearing">X</span>
+            </header>
+            <main><slot></slot></main>
+            <footer><button>{{title}}</button></footer>
+        </div>
+    </template>
+    <script src="./vue.js"></script>
+    <script>
+        let aoligei=new Vue({
+            el:"#all",
+            data:{
+                up:false,
+                down:false,
+            },
+            methods:{
+                show_up(){
+                    this.up=true;
+                    this.down=false;
+                },
+                show_down(){
+                    this.up=false;
+                    this.down=true;
+                },
+            },
+            components:{
+                'myAoligei':{
+                    template:"#part",
+                    props:['title'],
+                }
+            }
+        })
+    </script>
+</body>
+</html>

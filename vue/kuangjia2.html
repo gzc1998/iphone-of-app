@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .meme {
+            color: azure;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="haha">
+        <input type="text" v-model="shit" v-on:keyup="search">
+        <button v-on:click="add">添加一个</button>
+        <ul>
+            <li v-for="(aoligei1,index) in showlist" ,v-on:click="change(aoligei1)" ,v-bind:class="{meme:aoligei1.suoha}">
+                <span>{{aoligei1.name}}</span>
+                <button v-on:click.stop="delete(index)">删除</button>
+            </li>
+        </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var aoligei = new Vue({
+            el: '#haha',
+            data: {
+                shit: ' ',
+             list: [{
+                    name: 'zhaosi',
+                    age: 22,
+                    suoha: false, }, 
+                    {name: 'zhaoliu',
+                    age: 32,
+                    suoha: false,
+                     }, 
+                    {
+                    name: 'zhaoba',
+                    age: 27,
+                    suoha: false,
+                }],
+             showlist: [{
+                    name: 'zhaosi',
+                    age: 22,
+                    suoha: false,
+                }, {
+                    name: 'zhaoliu',
+                    age: 32,
+                    suoha: false,
+                }, {
+                    name: 'zhaoba',
+                    age: 27,
+                    suoha: false,
+                },]
+            },
+            methods: {
+                add() {
+                    this.list.push({
+                        name: this.shit,
+                        suoha: false,
+                    });
+                    this.showlist=[...this.list];
+                    this.shit = " ";
+                },
+                change(obj) {
+                    obj.suoha = !obj.suoha;
+                },
+                delete(index) {
+                    this.list.splice(index, 1);
+                },
+                search() {
+                    let arr1 = this.list.filter((obj1, index) => {
+                        return obj1.name.includes(this.shit);
+                    });
+                    this.list=arr1;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

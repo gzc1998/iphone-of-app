@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="all0">
+        <ganle hah='ainio',:biu='haha'></ganle>
+    </div>
+    <div id="all1"></div>
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component('ganle',{
+            template:'<div>{{hah}} {{biu}}</div>',
+            props:['hah','biu']
+        })
+        let aoligei=new Vue({
+            el:'#all0',
+            data:{
+                haha:'memeda',
+            },      
+        })
+    </script>
+</body>
+</html>

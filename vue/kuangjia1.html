@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .haha{
+            background-color: aqua;
+            width: 100px;
+            height: 100px;
+        }
+        .houhou{
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+   <div id="all">
+        {{ganle}}
+    </div>
+    <div id="aoligei">
+           
+    </div> 
+    <div id="all">
+        <button v-on:click='add'>添加</button>
+        <!-- <ul v-for="aoligei in aoligeis">
+            <li>姓名：{{aoligei.name}}</li>
+            <li>年龄：{{aoligei.age}}</li>
+            <li>性别：{{aoligei.gender}}</li>
+        </ul> -->
+        <div v-bind:class='{haha:judgement1,houhou: judgement2}'></div>
+        <button v-on:click="changeports">来自天堂的礼物</button>
+        <div></div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let haha = new Vue({
+            el:'#all',
+            data:{
+                judgement1:true,
+                judgement2:false,
+                // aoligeis=[{
+                //     name:'memeda',
+                //     age:22,
+                //     gender:'male'
+                // },
+                // {
+                //     name:'chengqiang',
+                //     age:25,
+                //     gender:'male'
+                // },{
+                //     name:'xinxin',
+                //     age:31,
+                //     gender:'female',
+                // }]
+            },
+            methods:{
+               /*  add(){
+                    this.aoligeis.push({
+                        name:'daxinxin',
+                    age:41,
+                    gender:'female',
+                    }), */
+                    changeports(){
+                        this.judgement1=!this.judgement1;
+
+                    }
+                }
+    
+        });
+    </script>
+    
+</body>
+</html>

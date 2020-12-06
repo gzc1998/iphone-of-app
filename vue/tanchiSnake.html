@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇小游戏</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #grassarea{
+            width: 600px;
+            height: 600px;
+            background-color: chartreuse;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="grassarea">
+
+    </div>
+    <button id="startgame">开始游戏</button>
+    <button id="shuaxin">刷新</button>
+    <script>
+        let start_game=document.getElementById('startgame');
+        let shuaxin_game=document.getElementById('shuaxin');
+        let get_grass=document.getElementById('grassarea');
+        let count=0;
+        let partformwidth=30;
+            let partformheight=30;
+           let partformnumber=get_grass.offsetWidth/partformwidth;
+            var number=1;
+            var timer;
+        start_game.onclick=function(){
+           timer=setInterval(() => {
+                Move();
+            }, 400);
+        }
+        shuaxin_game.onclick=function(){
+            Snake();
+            count++;
+            if(count==2){
+                Remove();
+                count--;
+            }
+}
+        function Snake(){
+            let creatsnake=document.createElement('div');
+            creatsnake.style.width=partformwidth*3+'px';
+            creatsnake.style.height=partformheight+'px';
+            creatsnake.style.backgroundColor='rgb('+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+','+(Math.random()*0.5+0.5)+')';
+            creatsnake.style.position='absolute';
+            creatsnake.style.left=Math.floor(Math.random()*(partformnumber-3))*30+"px";
+            creatsnake.style.top=Math.floor(Math.random()*(partformnumber-1))*30+"px";
+            creatsnake.className='snake';
+            get_grass.appendChild(creatsnake);
+            }
+            function Remove(){
+                get_grass.removeChild(get_grass.firstElementChild);
+        }
+        function Move(){
+            get_grass.firstElementChild.style.left= get_grass.firstElementChild.offsetLeft+partformwidth*number+'px';
+            if(get_grass.firstElementChild.offsetLeft>get_grass.offsetWidth-get_grass.firstElementChild.offsetWidth){
+                clearInterval(timer);
+                alert('撞死了');
+            }
+        }
+    </script>
+</body>
+</html>

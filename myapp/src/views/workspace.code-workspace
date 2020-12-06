@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"name": "lianxi",
+			"path": "..\\..\\.."
+		},
+		{
+			"name": "images",
+			"path": "..\\..\\..\\..\\Users\\nj\\Desktop\\孙老师给的代码\\fellow42\\indite响应式网站实例\\images"
+		},
+		{
+			"path": "..\\..\\..\\..\\Users\\nj\\Desktop\\孙老师给的代码\\fellow42\\indite响应式网站实例\\css"
+		},
+		{
+			"path": "..\\..\\..\\..\\Users\\nj\\Desktop\\孙老师给的代码\\fellow42\\indite响应式网站实例\\fonts"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "lianxi"
+	}
+}

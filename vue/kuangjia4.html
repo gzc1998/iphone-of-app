@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        #thearea button{
+            width: 60px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+        }
+        #simple{
+            width: 500px;
+            background-color: #f2f2f2f2;
+            border: 2px solid #ffff;
+            border-radius: 20px;
+            position: absolute;
+            left: 50%;
+            top:50%;
+           transform: translate(-50%,-50%);
+        }
+        #simple header{
+             height: 80px;
+             line-height: 80px;
+            padding: 0 10px;
+            border-bottom: solid 1px black;
+        }
+        #simple.close{
+            float: right;
+            padding: 0,10px;
+        }
+        #simple main{
+            height: 150px;
+            border-bottom: solid 1px black;
+        }
+        #simple footer{
+            height: 80px;
+            line-height: 80px;
+        }
+        #simple button{
+            width: 50px;
+            height: 40px;
+            border: burlywood 1px solid;
+            border-radius: 20px;
+        }
+</style>
+<body>
+    <div id="all">
+        <div id="thearea">
+            <button v-on:click="show_up">登陆</button>
+        <button v-on:click="show_scroll">注册</button>
+        </div>
+    <my-aoligei title="登录" v-show="up" v-on:closewindow="hidden">
+        <div id="wp">
+            <label>用户名</label>
+            <input type="text"></div>
+        <div id="wp"> 
+            <label>密码</label>
+            <input type="password"></div>
+    </my-aoligei>
+    <my-aoligei title="注册" v-show="scroll">
+        <div id="wp">
+            <label>用户名</label>
+            <input type="text"></div>
+        <div id="wp"> <label>密码</label>
+            <input type="password"></div>
+    </my-aoligei>
+</div>
+    <template id="part">
+        <div id="simple">
+            <header>
+            {{title}}   <span class="close" v-on:click='overhidden'>X</span>
+            </header>
+            <main><solt></solt></main>
+            <footer><button>{{title}}  </button></footer>
+        </div>
+    </template>
+    <script src="./vue.js"></script>
+    <script>
+        let today_pratice=new Vue({
+            el:'#all',
+            data:{
+                up:false,
+                scroll:false,
+            },
+            methods:{
+                show_up(){
+                    this.up=true;
+                    this.scroll=false;
+                },
+                show_scroll(){
+                    this.up=false;
+                    this.scroll=true;
+                },
+                hidden(){
+                    this.up=false;
+                    this.scroll=false;
+                }
+            },
+            components:{
+               'myAoligei':{template:
+                '#part',
+                props:['title'],
+                methods:{
+                    overhidden(){
+                    this.$emit('closewindow');
+                }
+            }
+            }
+        }
+        })
+    </script>
+</body>
+</html>
